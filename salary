@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+import java.util.Scanner;
+public class WeeklySalaryCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] hours = new int[7];
+
+        for (int i = 0; i < 7; i++) {
+            hours[i] = sc.nextInt();
+        }
+        int totalSalary = 0;
+        for (int i = 0; i < 7; i++) {
+            int dayHours = hours[i];
+            int basePay = dayHours * 100;
+            int overtimePay = 0;
+
+            if (dayHours > 8) {
+                overtimePay = (dayHours - 8) * 15;
+            }
+            if (i == 0) { 
+                basePay += 0.5 * (dayHours * 100);
+            } else if (i == 6) { 
+                basePay += 0.25 * (dayHours * 100);
+            }
+            totalSalary += basePay + overtimePay;
+        }
+        System.out.println((int) totalSalary);
+    }
+}
